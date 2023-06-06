@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage - Menyimpan Data</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: row;
+        }
+
+        form input {
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <form>
+        <input type="text" id="searchkey" name="searchkey" placeholder="Search Something"><br>
+        <input type="submit" value="Search" onclick="onSearch()">
+    </form>
+
+    <script>
+        var searchList = [];
+
+        function onSearch() {
+            var searchValue = document.getElementById('searchkey').value;
+            searchList.push(searchValue) // memasukan kata pencarian ke dalam array
+
+            var searchListString = JSON.stringify(searchList); // mengubah array menjadi string
+            localStorage.setItem('searchKey', searchListString); // menyimpan pencarian dengan key 'searchKey'
+        }
+    </script>
+</body>
+
+</html>
